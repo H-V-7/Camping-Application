@@ -5,14 +5,26 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Edit Campground</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
 </head>
 
 <body>
+    <form action="/campgrounds/<%= result._id %>?_method=PUT" method="POST">
 
+        <div>
+            <lable for="title">Title</lable>
+            <!-- the payload willl be given the name attribute as key and its value will be its property  -->
+            <input type="text" id="title" name="title" value="<%= result.title %>">
+        </div>
+        <div>
+            <lable for="location">Location</lable>
+            <input type="text" id="location" name="location" value="<%= result.location %>">
+        </div>
+        <button>Update CampGround</button>
+    </form>
+    <a href="/campgrounds ">Go to the main page</a>
 </body>
 
 </html>
