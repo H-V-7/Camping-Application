@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
     <h1>Camp Details</h1>
     <h1>
         <%= result.title %>
@@ -19,6 +20,13 @@
     <h2>
         <%= result.location %>
     </h2>
+    <a href="/campgrounds">Veiw all campgrounds</a> <br />
+    <a href="/campgrounds/<%= result._id %>/edit">Edit campground</a>
+
+    <form action="/campgrounds/<%= result._id %>?_method=DELETE" method="POST">
+        <button>Delete Campground</button>
+    </form>
+
 </body>
 
 </html>
