@@ -5,26 +5,26 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Add Cmpground</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
     <form action="/campgrounds" method="POST">
-        <div>
-            <div>
-                <lable for="title">Title</lable>
-                <input type="text" id="title" name="campground[title]">
-            </div>
-            <div>
-                <lable for="location">Location</lable>
-                <input type="text" id="location" name="campground[location]">
-            </div>
-            <button>Create New Camp</button>
 
+        <div>
+            <lable for="title">Title</lable>
+            <!-- the payload willl be given the name attribute as key and its value will be its property  -->
+            <input type="text" id="title" name="title">
         </div>
+        <div>
+            <lable for="location">Location</lable>
+            <input type="text" id="location" name="location">
+        </div>
+        <button>Create New Camp</button>
     </form>
+    <a href="/campgrounds">Go to the main page</a>
 </body>
 
 </html>
