@@ -28,10 +28,13 @@ const seedDB = async () => {
     await Campground.deleteMany({});
     for (let i = 0; i < 50; i++) {
         const random = Math.floor(Math.random() * 1000);
-
+        const price = Math.floor(Math.random() * 1500) + 1000;
         const camp = new Campground({
             location: `${cities[random].city}, ${cities[random].state}`, //string template loteral is used here `${}`
-            title: `${descriptors[Math.floor(Math.random() * descriptors.length)]} ${places[Math.floor(Math.random() * places.length)]}`
+            title: `${descriptors[Math.floor(Math.random() * descriptors.length)]} ${places[Math.floor(Math.random() * places.length)]}`,
+            image: "https://source.unsplash.com/collection/483251",
+            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum fuga reprehenderit, recusandae non voluptas nam accusantium quibusdam, optio debitis impedit aperiam explicabo veniam maxime deleniti accusamus doloremque repellat necessitatibus iure!",
+            price: price
         })
 
         await camp.save();

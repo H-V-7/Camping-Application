@@ -1,30 +1,57 @@
-<!DOCTYPE html>
+<% layout("layouts/boilerplate") %>
 
-<html>
+    <h1>Edit Campground</h1>
+    <div class="row">
+        <form action="/campgrounds/<%= result._id %>?_method=PUT" method="POST" novalidate class='.validated-form'>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Edit Campground</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-
-<body>
-    <form action="/campgrounds/<%= result._id %>?_method=PUT" method="POST">
-
-        <div>
-            <lable for="title">Title</lable>
-            <!-- the payload willl be given the name attribute as key and its value will be its property  -->
-            <input type="text" id="title" name="title" value="<%= result.title %>">
-        </div>
-        <div>
-            <lable for="location">Location</lable>
-            <input type="text" id="location" name="location" value="<%= result.location %>">
-        </div>
-        <button>Update CampGround</button>
-    </form>
+            <div class="mb-3">
+                <lable class="form-label" for="title">Title</lable>
+                <!-- the payload willl be given the name attribute as key and its value will be its property  -->
+                <input class="form-control" type="text" id="title" name="title" value="<%= result.title %>" required>
+                <div class="valid-feedback">Looks good</div>
+            </div>
+            <div class="mb-3">
+                <lable class="form-label" for="location">Location</lable>
+                <input class="form-control" type="text" id="location" name="location" value="<%= result.location %>"
+                    required>
+            </div>
+            <div class="mb-3">
+                <lable class="form-label" for="image">Image URL</lable>
+                <input class="form-control" type="text" id="image" name="image" value="<%= result.image %>" required>
+            </div>
+            <div class="mb-3">
+                <lable class="form-label" for="description">Descripton</lable>
+                <input class="form-control" type="text" id="description" name="description"
+                    value="<%= result.description %>" required>
+            </div>
+            <div class="mb-3">
+                <lable class="form-label" for="price">Price</lable>
+                <input class="form-control" type="text" id="price" name="price" value="<%= result.price %>" required>
+            </div>
+            <button>Update CampGround</button>
+        </form>
+    </div>
     <a href="/campgrounds ">Go to the main page</a>
-</body>
 
-</html>
+
+
+    <script>
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.validated-form')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>

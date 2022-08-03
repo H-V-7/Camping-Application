@@ -1,32 +1,33 @@
-<!DOCTYPE html>
+<% layout("layouts/boilerplate") %>
 
-<html>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Details</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
-</head>
-
-<body>
 
     <h1>Camp Details</h1>
+    <img src="<%= result.image %>" alt="Campground Image">
     <h1>
         <%= result.title %>
     </h1>
+    <p>
+        <%= result.description %>
+    </p>
+    <h4>
+        Price RS.<%= result.price %>
+    </h4>
     <h2>
         <%= result.location %>
     </h2>
-    <a href="/campgrounds">Veiw all campgrounds</a> <br />
-    <a href="/campgrounds/<%= result._id %>/edit">Edit campground</a>
 
-    <form action="/campgrounds/<%= result._id %>?_method=DELETE" method="POST">
-        <button>Delete Campground</button>
+    <a href="/campgrounds" class="btn btn-success mb-3">Veiw all campgrounds</a> <br />
+    <a href="/campgrounds/<%= result._id %>/edit" class="btn btn-primary mb-3">Edit campground</a>
+    <div class="mb-3">
+        <label for="rating" class="form-label">Rating</label>
+        <input type="range" name="rating" id="rating" min="0" max="5" class="form-range">
+    </div>
+    <form action="/campgrounds/<%=result.id %>/reviews" method="POST">
+        <label for="review" class="form-label">Review</label>
+        <textarea name="body" id="review" cols="30" rows="10" class="form-control"></textarea>
     </form>
 
-</body>
-
-</html>
+    <form action="/campgrounds/<%= result._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-danger">Delete Campground</button>
+    </form>

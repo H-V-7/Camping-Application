@@ -1,23 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout("layouts/boilerplate") %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campgrounds</title>
-</head>
-
-<body>
-    <a href="/campgrounds/new">Create a new camp ground</a>
-    <h1>Campgrounds</h1>
-    <%for (let campground of result) {%>
-        <!-- here we used the id which is coming from the datbase and completed the path in order to show the correct page -->
-        <li><a href="/campgrounds/<%=campground._id %>">
-                <%= campground.title %>
-            </a>
-        </li>
-        <% } %>
-</body>
-
-</html>
+    <body>
+        <a href="/campgrounds/new">Create a new camp ground</a>
+        <h1>Campgrounds</h1>
+        <%for (let campground of result) {%>
+            <!-- here we used the id which is coming from the datbase and completed the path in order to show the correct camp details -->
+            <div class="card" style="width: 18rem;">
+                <img src="<%= campground.image %>" class="card-img-top" alt="camp image">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%= campground.title %>
+                    </h5>
+                    <p class="card-text">
+                        <%=campground.description %>
+                    </p>
+                    <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">View <%= campground.title %>
+                            </a>
+                </div>
+            </div>
+            <% } %>
+    </body>
